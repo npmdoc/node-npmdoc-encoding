@@ -1,0 +1,160 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/andris9/encoding#readme"
+
+    >encoding (v0.1.12)</a>
+</h1>
+<h4>Convert encodings, uses iconv by default and fallbacks to iconv-lite if needed</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.encoding">module encoding</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.encoding.convert">
+            function <span class="apidocSignatureSpan">encoding.</span>convert
+            <span class="apidocSignatureSpan">(str, to, from, useLite)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.encoding" id="apidoc.module.encoding">module encoding</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.encoding.convert" id="apidoc.element.encoding.convert">
+        function <span class="apidocSignatureSpan">encoding.</span>convert
+        <span class="apidocSignatureSpan">(str, to, from, useLite)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function convert(str, to, from, useLite) {
+    from = checkEncoding(from || &#x27;UTF-8&#x27;);
+    to = checkEncoding(to || &#x27;UTF-8&#x27;);
+    str = str || &#x27;&#x27;;
+
+    var result;
+
+    if (from !== &#x27;UTF-8&#x27; &#x26;&#x26; typeof str === &#x27;string&#x27;) {
+        str = new Buffer(str, &#x27;binary&#x27;);
+    }
+
+    if (from === to) {
+        if (typeof str === &#x27;string&#x27;) {
+            result = new Buffer(str);
+        } else {
+            result = str;
+        }
+    } else if (Iconv &#x26;&#x26; !useLite) {
+        try {
+            result = convertIconv(str, to, from);
+        } catch (E) {
+            console.error(E);
+            try {
+                result = convertIconvLite(str, to, from);
+            } catch (E) {
+                console.error(E);
+                result = str;
+            }
+        }
+    } else {
+        try {
+            result = convertIconvLite(str, to, from);
+        } catch (E) {
+            console.error(E);
+            result = str;
+        }
+    }
+
+
+    if (typeof result === &#x27;string&#x27;) {
+        result = new Buffer(result, &#x27;utf-8&#x27;);
+    }
+
+    return result;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+## Usage
+
+Require the module
+
+  var encoding = require(&#x22;encoding&#x22;);
+
+Convert with encoding.<span class="apidocCodeKeywordSpan">convert</span>()
+
+  var resultBuffer = encoding.convert(text, toCharset, fromCharset);
+
+Where
+
+* **text** is either a Buffer or a String to be converted
+* **toCharset** is the characterset to convert the string
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
