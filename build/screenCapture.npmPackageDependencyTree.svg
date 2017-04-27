@@ -5,6 +5,6 @@
 <tspan x="10" y="42"></tspan>
 <tspan x="10" y="58">node_modules</tspan>
 <tspan x="10" y="74">└─┬ encoding@0.1.12 </tspan>
-<tspan x="10" y="90">  └── iconv-lite@0.4.15</tspan>
+<tspan x="10" y="90">  └── iconv-lite@0.4.16</tspan>
 </text>
 </svg>
