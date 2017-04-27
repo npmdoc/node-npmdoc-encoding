@@ -1,6 +1,6 @@
 # npmdoc-encoding
 
-#### api documentation for  [encoding (v0.1.12)](https://github.com/andris9/encoding#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-encoding.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-encoding) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-encoding.svg)](https://travis-ci.org/npmdoc/node-npmdoc-encoding)
+#### basic api documentation for  [encoding (v0.1.12)](https://github.com/andris9/encoding#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-encoding.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-encoding) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-encoding.svg)](https://travis-ci.org/npmdoc/node-npmdoc-encoding)
 
 #### Convert encodings, uses iconv by default and fallbacks to iconv-lite if needed
 
@@ -58,7 +58,8 @@
     "scripts": {
         "test": "nodeunit test"
     },
-    "version": "0.1.12"
+    "version": "0.1.12",
+    "bin": {}
 }
 ```
 
